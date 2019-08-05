@@ -1,0 +1,17 @@
+@import '../../index.scss';
+@import '~bootstrap/scss/bootstrap';
+
+.mcprodfooter {
+    background: $lightGreen;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    z-index: 9;
+    p {
+        font-size: 11px;
+        color: $brandColor;
+        margin-bottom: 0;
+    }
+}
