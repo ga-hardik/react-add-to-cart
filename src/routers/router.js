@@ -5,7 +5,6 @@ import Clinic from '../components/clinic/Clinic';
 import Product from '../components/product/Product';
 import Cart from '../components/cart/Cart';
 
-
 export class RouterComponent extends Component {
     render() {
         return (

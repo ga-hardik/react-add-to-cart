@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../axios';
 import { connect } from 'react-redux';
 
 import './Product.scss';
@@ -13,10 +13,7 @@ class Product extends Component {
 
     componentDidMount() {
         const clinicId = this.props.match.params.id;
-        const ax = axios.create({
-            baseURL: 'http://localhost:3000'
-        })
-        ax.get('jsondata/productlist.json')
+        axiosInstance.get('/jsondata/productlist.json')
             .then((response) => {
                 const arr = response.data.data.filter((product) => {
                     return clinicId === product.clinicId

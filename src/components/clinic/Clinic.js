@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import axiosInstance from '../../axios';
 
 import './Clinic.scss';
 
@@ -10,10 +10,7 @@ class Clinic extends Component {
     }
 
     componentDidMount() {
-        const ax = axios.create({
-            baseURL: 'http://localhost:3000'
-        })
-        ax.get('jsondata/cliniclist.json')
+        axiosInstance.get('/jsondata/cliniclist.json')
             .then((response) => {
                 this.setState({ clinicData: response.data.data });
             });
@@ -23,10 +20,6 @@ class Clinic extends Component {
         if (item.clinicId) {
             this.props.history.push(`/product/${item.clinicId}/${item.name}`);
         }
-    }
-
-    importAll(r) {
-        return r.keys().map(r);
     }
 
     render() {
