@@ -22,22 +22,6 @@ class Product extends Component {
             });
     }
 
-    handleAddToCart(item) {
-        this.state.addToCartData.push(item);
-        return this.getUnique(this.state.addToCartData);
-    }
-
-    getUnique(array) {
-        let uniqueArray = [];
-
-        for (let i = 0; i < array.length; i++) {
-            if (uniqueArray.indexOf(array[i]) === -1) {
-                uniqueArray.push(array[i]);
-            }
-        }
-        return uniqueArray;
-    }
-
     render() {
         return (
             <div className="mcprodcont">
@@ -68,7 +52,7 @@ class Product extends Component {
                                                                         <h4>Rs. {item.price}</h4>
                                                                     </div>
                                                                     <div className="col-sm-6 text-right mcitemcart">
-                                                                        <button className="btn mccartlink" onClick={() => this.props.onUpdateCart(this.handleAddToCart(item))}>Add to cart</button>
+                                                                        <button className="btn mccartlink" onClick={() => this.props.onUpdateCart(item)}>Add to cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -96,7 +80,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onUpdateCart: (item) => dispatch({ type: 'UPDATED', payload: item })
+        onUpdateCart: (item) => dispatch({ type: 'ADD', payload: item })
     }
 }
 

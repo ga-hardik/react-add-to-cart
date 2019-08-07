@@ -3,9 +3,11 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === 'UPDATED') {
+    if (action.type === 'ADD') {
+        const cartData = state.addToCartData;
+        cartData.push(action.payload);
         return {
-            addToCartData: action.payload
+            addToCartData: getUnique(cartData)
         }
     }
     if (action.type === 'DELETE') {
@@ -14,6 +16,17 @@ const reducer = (state = initialState, action) => {
         }
     }
     return state;
+}
+
+const getUnique = (array) => {
+    let uniqueArray = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (uniqueArray.indexOf(array[i]) === -1) {
+            uniqueArray.push(array[i]);
+        }
+    }
+    return uniqueArray;
 }
 
 export default reducer;
